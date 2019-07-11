@@ -1,0 +1,22 @@
+---
+- hosts: grafana
+  gather_facts: False
+  become: yes
+  tasks:
+   - name: Download docker package
+     apt:
+       name: docker.io
+       state: present
+       update_cache: yes
+
+   - name: start docker
+     service:
+       name: docker
+       state: started
+       enabled: yes
+
+   - name: install grafana from docker container
+     shell: docker volume create grafana-storage
+
+   - name: install grafana from docker container
+     shell: docker run -d -p 3000:3000 --name=grafana -v grafana-storage:/var/lib/grafana grafana/grafana

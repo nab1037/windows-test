@@ -1,0 +1,9 @@
+[grafana]
+34.231.255.225
+
+[grafana:vars]
+ansible_connection=ssh
+ansible_ssh_private_key_file=/Users/nicholasbell/apisystems/API_TestKey.pem
+ansible_ssh_user=root
+ansible_become=yes
+ansible_become_method=enable

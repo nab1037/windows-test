@@ -1,0 +1,12 @@
+---
+- hosts: grafana
+  gather_facts: no
+  remote_user: root
+  become: yes
+  pre_tasks:
+    - name: Refresh apt cache
+      become: no
+      local_action: shell ssh -q -o StrictHostKeyChecking=no -o ConnectTimeout=5 {{ inventory_hostname }} sudo apt-get update
+    - name: Install Python-apt to pull in Python
+      become: no
+      local_action: shell ssh -q -o StrictHostKeyChecking=no -o ConnectTimeout=5 {{ inventory_hostname }} sudo apt-get install --no-install-recommends --assume-yes python-apt

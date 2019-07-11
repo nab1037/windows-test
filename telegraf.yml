@@ -1,0 +1,22 @@
+---
+- hosts: win-test
+  gather_facts: False
+  become: yes
+  tasks:
+   - name: Download binary conf file
+     win_copy:
+       src: /Users/nicholasbell/apisystems/windows-hosts/telegraf/telegraf.conf
+       dest: C:\Users\Administrator\Desktop\telegraf\
+
+   - name: Download binary exe file
+     win_copy:
+       src: /Users/nicholasbell/apisystems/windows-hosts/telegraf/telegraf.exe
+       dest: C:\Users\Administrator\Desktop\telegraf\
+
+    - name: Touch a log file
+      win_file:
+        path: C:\Users\Administrator\Desktop\telegraf\telegraf.log
+        state: touch
+
+    - name: run telegraf as a service
+      win_command: C:\Users\Administrator\Desktop\telegraf\telegraf.exe  --config C:\Users\Administrator\Desktop\telegraf\telegraf.conf --service install

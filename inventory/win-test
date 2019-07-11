@@ -1,0 +1,9 @@
+[win-test]
+aws-win-1 ansible_host=18.207.232.241
+
+[win-test:vars]
+ansible_user=Administrator
+ansible_password=JE(uCZ%cJ6sWb6W3Ruh=m4!rZkMU-;LH
+ansible_connection=winrm
+ansible_port=5985
+ansible_winrm_server_cert_validation=ignore
