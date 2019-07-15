@@ -27,19 +27,19 @@
 
 - name: pull awscli script file from role
   copy:
-    src: roles/deployworkspaces/files/awscli.sh
+    src: awscli.sh
     dest: /home/ec2-user/workspaces/bin/awscli.sh
     mode: '0777'
 
 - name: pull python script file from role
   copy:
-    src: roles/deployworkspaces/files/csvconverter.py
+    src: csvconverter.py
     dest: /home/ec2-user/workspaces/bin/csvconverter.py
     mode: '0777'
 
 - name: pull bash script file from role
   file:
-    src: roles/deployworkspaces/files/create-batchworkspaces.sh
+    src: create-batchworkspaces.sh
     dest: /home/ec2-user/workspaces/bin/create-batchworkspaces.sh
     mode: '0777'
 
