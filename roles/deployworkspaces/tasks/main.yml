@@ -20,7 +20,8 @@
     mode: '0755'
 
 - name: pull csv file from s3-bucket
-  command: bash /home/ec2-user/awscli.sh
+  command: /bin/bash /home/ec2-user/awscli.sh
+  remote_user: ec2-user
   #  args:
   #    executable: /bin/bash
 
