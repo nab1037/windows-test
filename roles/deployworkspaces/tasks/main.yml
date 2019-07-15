@@ -14,7 +14,7 @@
     path: /home/ec2-user/workspaces/bin
     state: director
     owner: ec2-user
-    group: ec2-usery
+    group: ec2-user
     mode: '0755'
 
 - name: Create payload directory if it does not exist
@@ -57,7 +57,6 @@
 
 - name: parse csv into json payload(s)
   script: /home/ec2-user/awscli.sh
-  remote_user: ec2-user
 
 - name: parse csv into json payload(s)
   script: /home/ec2-user/workspaces/bin/csvconverter.py create-workspaces.csv
