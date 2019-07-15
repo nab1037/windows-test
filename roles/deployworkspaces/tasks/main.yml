@@ -20,7 +20,7 @@
     mode: '0755'
 
 - name: pull csv file from s3-bucket
-  shell: aws s3 cp s3://qcentrix.createworkspaces/create-workspaces-nick.csv /home/ec2-user/workspaces/bin/create-workspaces.csv
+  shell: /usr/bin/aws s3 cp s3://qcentrix.createworkspaces/create-workspaces-nick.csv /home/ec2-user/workspaces/bin/create-workspaces.csv
 
 - name: pull python script file from role
   copy:
