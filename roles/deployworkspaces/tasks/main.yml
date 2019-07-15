@@ -1,0 +1,55 @@
+---
+# tasks file for deployworkspaces
+
+- name: Create workspaces directory if it does not exist
+  file:
+    path: /home/ec2-user/workspaces
+    state: directory
+    mode: '0755'
+
+- name: Create bin directory if it does not exist
+  file:
+    path: /home/ec2-user/workspaces/bin
+    state: directory
+    mode: '0755'
+
+- name: Create payload directory if it does not exist
+  file:
+    path: /home/ec2-user/workspaces/bin/payload
+    state: directory
+    mode: '0755'
+
+- name: pull csv file from s3-bucket
+  s3:
+   bucket: qcentrix.createworkspaces
+   object: create-workspaces-nick.csv
+   dest: /home/ec2-user/workspaces/bin/create-workspaces.csv
+   mode: get
+
+- name: pull python script file from role
+  copy:
+    source: roles/deployworkspaces/files/csvconverter.py
+    dest: /home/ec2-user/workspaces/bin/csvconverter.py
+    mode: '0777'
+
+- name: pull bash script file from role
+  file:
+    source: roles/deployworkspaces/files/create-batchworkspaces.sh
+    dest: /home/ec2-user/workspaces/bin/create-batchworkspaces.sh
+    mode: '0777'
+
+- name: parse csv into json payload(s)
+  script: /home/ec2-user/workspaces/bin/csvconverter.py create-workspaces.csv
+  args:
+    executable: python3
+
+- name: parse csv into json payload(s)
+  script: /home/ec2-user/workspaces/bin/create-batchworkspaces.sh
+
+- name: running batch workspaces deploy process
+  script: create-batchworkspaces.sh
+
+- name: cleanup of artifacts
+  file:
+    path: /home/ec2-user/workspaces/
+    state: absent
