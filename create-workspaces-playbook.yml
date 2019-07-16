@@ -1,8 +1,7 @@
 ---
 
-- hosts: all
+- hosts: worker
   gather_facts: no
-  connection: local
   remote_user: ec2-user
   roles:
     - deployworkspaces
