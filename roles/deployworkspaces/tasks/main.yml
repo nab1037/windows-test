@@ -50,7 +50,7 @@
     group: ec2-user
 
 - name: pull bash script file from role
-  file:
+  copy:
     src: "{{ role_path }}/files/create-batchworkspaces.sh"
     dest: /home/ec2-user/workspaces/bin/create-batchworkspaces.sh
     mode: '0777'
