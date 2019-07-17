@@ -57,23 +57,15 @@
     owner: ec2-user
     group: ec2-user
 
-    #- name: download from s3
-    #  script: "{{ role_path }}/files/awscli.sh"
-  #    remote_src: True
-
 - name: parse csv into json payload(s)
-  script: "{{ role_path }}/files/csvconverter.py create-workspaces.csv"
+  command: python3 csvconverter.py create-workspaces.csv"
   args:
-    executable: python3
-    #  remote_src: True
-
-- name: parse csv into json payload(s)
-  script: /home/ec2-user/workspaces/bin/create-batchworkspaces.sh
-  #  remote_src: True
+    chdir: /home/ec2-user/workspaces/bin/
 
 - name: running batch workspaces deploy process
-  script: create-batchworkspaces.sh
-  #  remote_src: True
+  command: bash create-batchworkspaces.sh
+  args:
+    chdir: /home/ec2-user/workspaces/bin/
 
 - name: cleanup of artifacts
   file:
