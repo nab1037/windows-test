@@ -6,10 +6,10 @@
     state: directory
       
 - name: OS-specific tasks
-  include_tasks: "{{ ansible_distribution|lower }}.yml"
+  include_tasks: "{{ role_path }}/tasks/{{ ansible_distribution|lower }}.yml"
 
 - name: pyenv tasks
-  include_tasks: pyenv.yml
+  include_tasks: "{{ role_path }}/tasks/pyenv.yml"
   when: python3_pyenv != None
 
 - name: install/upgrade utilities
