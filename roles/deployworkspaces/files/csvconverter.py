@@ -6,7 +6,7 @@ from datetime import datetime
 
 #User or Ansible passes the CSV file name
 csvfile = str(sys.argv[1])
-jsonFilePath= "parser/happy.json"
+jsonFilePath= "payload/happy.json"
 
 #set some of the dictionaries for json jsonFile
 workspacesprop = {
@@ -55,7 +55,7 @@ with open( str(csvfile), 'r' ) as f:
     #once 8 users is hit, accomodate and reset
     if counter >= 1:
       stamp = str(datetime.utcnow().strftime('%S.%f'))
-      jsonFilePath = "parser/happy" + stamp + ".json"
+      jsonFilePath = "payload/happy" + stamp + ".json"
       with open(jsonFilePath, "w") as jsonFile:
         jsonFile.write("")
       counter = 0
