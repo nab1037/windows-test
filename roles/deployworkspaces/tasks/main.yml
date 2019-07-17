@@ -2,7 +2,7 @@
 # tasks file for deployworkspaces
 
 - name: install python3
-  command: amazon-linux-extras install python3
+  command: amazon-linux-extras install python3 -y
   become: yes
 
 - name: Create workspaces directory if it does not exist
