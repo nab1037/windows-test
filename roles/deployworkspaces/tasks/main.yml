@@ -67,7 +67,7 @@
   args:
     chdir: /home/ec2-user/workspaces/bin/
 
-- name: cleanup of artifacts
-  file:
-    path: /home/ec2-user/workspaces/
-    state: absent
+    #- name: cleanup of artifacts
+    #  file:
+    #    path: /home/ec2-user/workspaces/
+    #    state: absent
