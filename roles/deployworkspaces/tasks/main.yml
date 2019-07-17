@@ -27,19 +27,17 @@
     group: ec2-user
     mode: '0755'
 
-    #- name: pull csv file from s3-bucket
-    #  command: /bin/bash /home/ec2-user/awscli.sh
-    #  remote_user: ec2-user
-    #  args:
-    #    executable: /bin/bash
+- name: pull csv file from s3-bucket
+  command: aws s3 cp s3://qcentrix.createworkspaces/create-workspaces-nick.csv /home/ec2-user/workspaces/bin/create-workspaces.csv
+  remote_user: ec2-user
 
-- name: pull awscli script file from role
-  copy:
-    src: "{{ role_path }}/files/awscli.sh"
-    dest: /home/ec2-user/workspaces/bin/awscli.sh
-    mode: '0777'
-    owner: ec2-user
-    group: ec2-user
+  #- name: pull awscli script file from role
+  #  copy:
+  #    src: "{{ role_path }}/files/awscli.sh"
+  #    dest: /home/ec2-user/workspaces/bin/awscli.sh
+  #    mode: '0777'
+  #    owner: ec2-user
+  #    group: ec2-user
 
 - name: pull python script file from role
   copy:
@@ -57,8 +55,8 @@
     owner: ec2-user
     group: ec2-user
 
-- name: download from s3
-  script: "{{ role_path }}/files/awscli.sh"
+    #- name: download from s3
+    #  script: "{{ role_path }}/files/awscli.sh"
   #    remote_src: True
 
 - name: parse csv into json payload(s)
