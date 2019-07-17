@@ -58,7 +58,7 @@
     group: ec2-user
 
 - name: parse csv into json payload(s)
-  command: python3 csvconverter.py create-workspaces.csv"
+  command: python3 csvconverter.py create-workspaces.csv
   args:
     chdir: /home/ec2-user/workspaces/bin/
 
