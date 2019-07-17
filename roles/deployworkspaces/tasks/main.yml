@@ -59,21 +59,21 @@
 
 - name: download from s3
   script: "{{ role_path }}/files/awscli.sh"
-    remote_src: True
+  #    remote_src: True
 
 - name: parse csv into json payload(s)
   script: /home/ec2-user/workspaces/bin/csvconverter.py create-workspaces.csv
   args:
     executable: python3
-  remote_src: True
+    #  remote_src: True
 
 - name: parse csv into json payload(s)
   script: /home/ec2-user/workspaces/bin/create-batchworkspaces.sh
-  remote_src: True
+  #  remote_src: True
 
 - name: running batch workspaces deploy process
   script: create-batchworkspaces.sh
-  remote_src: True
+  #  remote_src: True
 
 - name: cleanup of artifacts
   file:
