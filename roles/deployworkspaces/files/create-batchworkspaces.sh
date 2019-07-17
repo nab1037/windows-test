@@ -1,8 +1,13 @@
 #!/bin/bash
 
-for i in $(ls payload/*.json)
+counter=0
+for i in $(ls payload/*.json);
 do
-  # processing workspaces payload files 
+  ((counter++))
   aws workspaces create-workspaces --cli-input-json  file://$i
-  #sleep 33m
+  if [ $counter -gt 3 ]
+  then 
+    counter=0
+    sleep 1m
+  fi
 done
