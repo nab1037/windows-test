@@ -1,0 +1,5 @@
+- hosts: all
+
+  roles:
+    - name: python3
+      python3_pyenv: "3.7.2"
