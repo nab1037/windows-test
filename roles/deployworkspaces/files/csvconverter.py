@@ -6,14 +6,14 @@ from datetime import datetime
 
 #User or Ansible passes the CSV file name
 csvfile = str(sys.argv[1])
-jsonFilePath= "happy.json"
+jsonFilePath= "./parser/happy.json"
 
 #set some of the dictionaries for json jsonFile
 workspacesprop = {
 "RunningMode": "AUTO_STOP",
 "RunningModeAutoStopTimeoutInMinutes": 0,
-"RootVolumeSizeGib": 50,
-"UserVolumeSizeGib": 80,
+"RootVolumeSizeGib": 80,
+"UserVolumeSizeGib": 50,
 "ComputeTypeName": "STANDARD"}
 
 tags = { "Key": "test",
@@ -39,9 +39,9 @@ with open( str(csvfile), 'r' ) as f:
       "DirectoryId": DirectoryID,
       "UserName": UserName,
       "BundleId": BundleID,
-      "VolumeEncryptionKey": VolumeEncryptionKey,
-      "UserVolumeEncryptionEnabled": "true",
-      "RootVolumeEncryptionEnabled": "true",
+#      "VolumeEncryptionKey": VolumeEncryptionKey,
+#      "UserVolumeEncryptionEnabled": "true",
+#      "RootVolumeEncryptionEnabled": "true",
       "WorkspaceProperties" : workspacesprop,
       'Tags': [ tags ]}
 
@@ -53,11 +53,12 @@ with open( str(csvfile), 'r' ) as f:
     #counter portion to only have 8 users per file
     counter += 1
     #once 8 users is hit, accomodate and reset
-    if counter >= 8:
+    if counter >= 1:
       stamp = str(datetime.utcnow().strftime('%S.%f'))
-      jsonFilePath = "happy" + stamp + ".json"
+      jsonFilePath = "./parser/happy" + stamp + ".json"
       with open(jsonFilePath, "w") as jsonFile:
         jsonFile.write("")
       counter = 0
 
 print("JSON saved!")
+
