@@ -60,7 +60,7 @@
   #    remote_src: True
 
 - name: parse csv into json payload(s)
-  script: {{ role_path }}/files/csvconverter.py create-workspaces.csv
+  script: "{{ role_path }}/files/csvconverter.py create-workspaces.csv"
   args:
     executable: python3
     #  remote_src: True
