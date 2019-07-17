@@ -2,4 +2,3 @@
 
   roles:
     - ansible-python3-role
-        python3_pyenv: "3.7.2"
