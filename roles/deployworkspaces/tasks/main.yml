@@ -33,10 +33,18 @@
   command: aws s3 cp s3://qcentrix.createworkspaces/create-workspaces-nick.csv /home/ec2-user/workspaces/bin/create-workspaces.csv
   remote_user: ec2-user
 
-- name: pull python script file from role
+- name: pull parser python script file from role
   copy:
     src: "{{ role_path }}/files/csvconverter.py"
     dest: /home/ec2-user/workspaces/bin/csvconverter.py
+    mode: '0777'
+    owner: ec2-user
+    group: ec2-user
+
+- name: pull email python script file from role
+  copy:
+    src: "{{ role_path }}/files/senddeployemail.py"
+    dest: /home/ec2-user/workspaces/bin/senddeployemail.py
     mode: '0777'
     owner: ec2-user
     group: ec2-user
