@@ -11,7 +11,7 @@ jsonFilePath= "payload/happy.json"
 #set some of the dictionaries for json jsonFile
 workspacesprop = {
 "RunningMode": "AUTO_STOP",
-"RunningModeAutoStopTimeoutInMinutes": 0,
+"RunningModeAutoStopTimeoutInMinutes": 60,
 "RootVolumeSizeGib": 80,
 "UserVolumeSizeGib": 50,
 "ComputeTypeName": "STANDARD"}
