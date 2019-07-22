@@ -75,7 +75,9 @@
 - name: archive csv file in s3-bucket
   command: aws s3 cp s3://qcentrix.createworkspaces/create-workspaces.csv s3://qcentrix.createworkspaces/archive/create-workspaces-archive.csv
   remote_user: ec2-user
+  ignore_errors: yes
 
 - name: prep bucket for future use
   command: aws s3 rm s3://qcentrix.createworkspaces/create-workspaces.csv
   remote_user: ec2-user
+  ignore_errors: yes
