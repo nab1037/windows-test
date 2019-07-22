@@ -64,6 +64,7 @@
 
 - name: running batch workspaces deploy process
   command: bash create-batchworkspaces.sh
+  remote_user: ec2-user
   args:
     chdir: /home/ec2-user/workspaces/bin/
 
