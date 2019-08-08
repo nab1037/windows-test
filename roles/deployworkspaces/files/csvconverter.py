@@ -39,9 +39,9 @@ with open( str(csvfile), 'r' ) as f:
       "DirectoryId": DirectoryID,
       "UserName": UserName,
       "BundleId": BundleID,
-#      "VolumeEncryptionKey": VolumeEncryptionKey,
-#      "UserVolumeEncryptionEnabled": "true",
-#      "RootVolumeEncryptionEnabled": "true",
+      "VolumeEncryptionKey": VolumeEncryptionKey,
+      "UserVolumeEncryptionEnabled": "true",
+      "RootVolumeEncryptionEnabled": "true",
       "WorkspaceProperties" : workspacesprop,
       'Tags': [ tags ]}
 
