@@ -16,7 +16,7 @@
 
     # output results
     - debug: var=result
-    
+
     # reboot only if required
     - win_reboot:
       when: result.reboot_required
